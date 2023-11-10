@@ -1,0 +1,81 @@
+body{
+    min-height: 100vh;
+    background: #212534;
+    margin: 0;
+}
+
+.headerContainer{
+    display: flex;
+    height: 100px;
+    width: 100%;
+    border: 5px solid transparent;
+    background-color: #212529;
+}
+
+.profileDiv{
+    height: calc(100%-10px);
+    width: 100px;
+    min-width: 100px;
+    padding: 5px;
+    border-radius: 5px;
+    background: linear-gradient(
+    var(--rotate),
+    #ff5d5d,
+    #e33c3c 43%,
+    #c20000
+  );
+    opacity: 1;
+    transition: opacity 0.5s;
+    animation: spin 2.5s linear infinite;
+}
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 132deg;
+    inherits: false;
+  }
+  
+  @keyframes spin {
+    0% {
+      --rotate: 0deg;
+    }
+    100% {
+      --rotate: 360deg;
+    }
+  }
+
+.picDiv{
+    height: 80px;
+    width: calc(100%-10px);
+    border-radius: 5px;
+}
+footer{
+    color: wheat;
+    position:absolute;
+    bottom: 0;
+    right: 0;
+    height: 50px;
+}
+
+.pic{
+    width: 100%;
+    height: 100%;  
+}
+
+.navDiv{
+    position: relative;
+    height: 100%;
+    width: calc(100% - 100px);
+    border: 5px solid transparent;
+    border-radius: 5px;
+    min-width: 300px;
+}
+
+.divSC{
+    display: flex;
+    position: absolute;
+    right: 0;
+}
+.container{
+    margin: 0;
+}
+
