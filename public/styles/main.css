@@ -49,11 +49,10 @@ body{
     border-radius: 5px;
 }
 footer{
-    display:flex;
-    justify-content: end;
     color: wheat;
-    position:relative;
+    position: absolute;
     bottom: 0;
+    left: 0;
     height: 50px;
     padding-right: 10px;
 }
@@ -108,7 +107,7 @@ footer{
   flex-direction: column;
   padding-left: 5px;
 }
-.proDet p, .nxtprvDiv p{
+.proDet p, .nxtprvDiv p, footer p{
   margin-bottom: 0;
 }
 .nxtprvDiv{
@@ -131,4 +130,15 @@ h2{
 }
 .nxtprvDiv p{
   color: bisque;
+}
+.searchDiv{
+  padding: 10px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+h3{
+  color: rgb(250, 4, 4);
+  text-align: center;
 }
