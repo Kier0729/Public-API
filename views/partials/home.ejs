@@ -1,8 +1,20 @@
+<h2>PRO Players</h2>
 <div class="bodyMain">
-<% for (var x = 0; x < 15; x++){ %>    
+<% var y = (x+15) %>
+<% for (x = x; x < y; x++){ %>    
 <div class="bodyDiv">
     <div class="picHome"><img class="pic" src="<%= homePro[x].avatarfull %>" alt=""></div>
     <div class="proDet"><p>IGN: <%= homePro[x].personaname %></p> <p>COUNTRY: <%= homePro[x].country_code %></p> <p>TEAM: <%= homePro[x].team_name %></p></div>
 </div>
 <% } %>
 </div>
+<form action="GET">
+    <div class="nxtprvDiv">
+      <div type="submit" onclick="window.location.href='/prev'"><!-- making button for prev -->
+        <p>Prev</p>
+      </div>
+      <div type="submit" onclick="window.location.href='/next'"><!-- making button for next -->
+        <p>Next</p>
+      </div>
+    </div>
+  </form>
