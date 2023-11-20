@@ -1,0 +1,8 @@
+<div class="bodyMain">
+<% for (var x = 0; x < 15; x++){ %>    
+<div class="bodyDiv">
+    <div class="picHome"><img class="pic" src="<%= homePro[x].avatarfull %>" alt=""></div>
+    <div class="proDet"><p>IGN: <%= homePro[x].personaname %></p> <p>COUNTRY: <%= homePro[x].country_code %></p> <p>TEAM: <%= homePro[x].team_name %></p></div>
+</div>
+<% } %>
+</div>

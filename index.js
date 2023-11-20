@@ -3,7 +3,7 @@ import axios from "axios";
 
 const app = express();
 const port = 3000;
-const API_URL = "";
+const API_URL = "https://api.opendota.com/api";
 var currYear = "";
 app.use(express.static("public"));
 
@@ -20,10 +20,18 @@ app.use(currentYear);
 app.get("/", async (req, res) => {
 
     
+        try{
+            const result = await axios.get(API_URL+"/proPlayers");
+            const homePro = result.data;
+            res.render("index.ejs",{
+                currYear,
+                homePro
+            });
+            
+        } catch (error) {
+            console.log(error.message);
+        }
         
-        res.render("index.ejs",{
-            currYear
-        });
         
         /*, {
             secret: JSON.stringify(result.data.secret),
