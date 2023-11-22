@@ -1,22 +1,23 @@
 <%- include("header.ejs") %>
 <div class="searchDiv">
-    <form action="/search" method="POST">
-        <input type="text" name="personaName" placeholder="IGN">
+    <form action="/search" method="POST"> <!-- POST method for /search endpoint -->
+        <Label>Persona Name/IGN: <input type="text" name="personaName" placeholder="IGN"></Label>
         <input type="submit" value="OK">
       </form>
 </div>
-<% if(locals.homePro){ %>
+<% if(locals.homePro){ %> <!-- if homePro is present proceed below(Show players and add Buttons(Prev/Next))-->
 <div class="bodyMain">
-    <% var y = (x+15) %>
-    <% if (y < homeProLength) { %>
-    <% for (x = x; x < y; x++){ %>    
+    <% var y = (x+15) %> <!-- make the value of y x+15 to show 15 players -->
+    <% if (y < homeProLength) { %> <!-- if current value of y is < homeProLength end the for loop base of y -->
+    <% for (x = x; x < y; x++){ %>   
     <div class="bodyDiv">
         <div class="picHome"><img class="pic" src="<%= homePro[x].avatarfull %>" alt=""></div>
         <div class="proDet"><p>IGN: <%= homePro[x].personaname %></p> <p>ACCOUNT ID: <%= homePro[x].account_id %></p></div>
     </div>
     
     <% } %>
-    <% } else { %>
+    <% } else { %> <!-- if current value of y > homeProLength end the for loop base on homeProLength to make -->
+                   <!-- sure the x will not exceed to homeProLength -->
         <% for (x = x; x < homeProLength; x++){ %>    
             <div class="bodyDiv">
                 <div class="picHome"><img class="pic" src="<%= homePro[x].avatarfull %>" alt=""></div>
@@ -35,7 +36,7 @@
           </div>
         </div>
       </form>
-    <% } else {%>
-        <h3> No Results </h3>
+    <% } else {%> <!-- if homePro is not present -->
+        
     <% } %>        
 <%- include("footer.ejs") %>

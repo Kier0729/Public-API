@@ -1,5 +1,8 @@
 body{
+    position: relative; /* set a position to body to make footer position base on the body  */
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     background: #212534;
     margin: 0;
 }
@@ -48,8 +51,10 @@ body{
     width: calc(100%-10px);
     border-radius: 5px;
 }
-footer{
+footer div{ /* set a position to body to make footer position base on the body  */
     color: wheat;
+    display: flex;
+    align-items:flex-end;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -81,9 +86,9 @@ footer{
 }
 
 .picHome{
-  height: 75px;
-  width: 75px;
-  border: 2px solid #black;
+  height: 70px;
+  width: 70px;
+  border: 2px solid black;
   border-radius: 5px;
 }
 
@@ -92,8 +97,6 @@ footer{
   grid-template-columns: 1fr 1fr 1fr;
   height: 100%;
   width: 100%;
-  border: 2px solid black;
-  border-radius: 5px;
 }
 .bodyDiv{
   display: flex;
@@ -141,7 +144,7 @@ h2{
   display: flex;
   justify-content: center;
 }
-h3{
+label{
   color: rgb(250, 4, 4);
   text-align: center;
 }

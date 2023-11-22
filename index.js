@@ -26,9 +26,9 @@ function currentYear(req, res, next){
 // mounting/using the currentYear middleware
 app.use(currentYear);
 
-// displays set of 15 pro players
+// displays set of first 15 pro players (Home Page)
 app.get("/", async (req, res) => {
-    x = 0;
+    x = 0; // index 0 
         try{
         result = await axios.get(API_URL+"/proPlayers");
         homePro = result.data;
@@ -63,7 +63,8 @@ app.get("/", async (req, res) => {
 
 // displays the previous 15 pro players
 app.get("/prev", async (req, res) => {
-    if (x >= 15){
+    if (x >= 15){ // logical condition to check if the current value of x/index is = or > 15, if 
+                  // true proceed below to deduct 15 and show the previous 15 players
     x = x - 15;
     try{
         result = await axios.get(API_URL+"/proPlayers");
@@ -78,12 +79,14 @@ app.get("/prev", async (req, res) => {
         console.log(error.message);
     }
 } else {
-    res.redirect("/");
+    res.redirect("/"); // if x is < 15 just redirect to home page.
 }
 });
 
+// POST /search get the ign from personaName inside the search.ejs
 app.post("/search", async (req, res) => {
     ign = req.body["personaName"];
+    // check if user inputs ign(personaName) in search.ejs
     if(ign){
         x = 0;
         try{
@@ -101,13 +104,13 @@ app.post("/search", async (req, res) => {
         } catch (error) {
             console.log(error.message);
         }
-} else{
+} else{ // if user didnt enter ign(personaName) render the search.ejs and past the currYear for the footer
     res.render("partials/search.ejs",{
         currYear
     });
     }
   });
-
+// GET /serch render the search.ejs and past the currYear for the footer
 app.get("/search", async (req, res) => {
   
     res.render("partials/search.ejs",{
@@ -115,10 +118,11 @@ app.get("/search", async (req, res) => {
     });
   });
 
+  // next page button of the search.ejs
   app.get("/nextSearch", async (req, res) => {
     
-    x = x + 15;
-    if (x < (homeProLength)){
+    x = x + 15; // increment x by 15
+    if (x < (homeProLength)){ // if x < homeProLength 
     try{
         result = await axios.get(API_URL+"/search?q="+ign);
         homePro = result.data;
@@ -133,7 +137,7 @@ app.get("/search", async (req, res) => {
         console.log(error.message);
     }
 } else {
-    x = x - 15;
+    x = x - 15; // if x is > homeProLength decrement it by 15 to revert it to its current value
     try{
         result = await axios.get(API_URL+"/search?q="+ign);
         homePro = result.data;
@@ -150,8 +154,10 @@ app.get("/search", async (req, res) => {
 }
 });
 
+// prev button for search.ejs
 app.get("/prevSearch", async (req, res) => {
-    if (x >= 15){
+    if (x >= 15){ // logical condition to check if the current value of x/index is = or > 15, if 
+                  // true proceed below to deduct 15 and show the previous 15 players
     x = x - 15;
     try{
         result = await axios.get(API_URL+"/search?q="+ign);
@@ -166,7 +172,8 @@ app.get("/prevSearch", async (req, res) => {
     } catch (error) {
         console.log(error.message);
     }
-} else {
+} else { // if x is < 15 just render partials/search.ejs and past the default/starting value of currYear, 
+         // homePro, x, homeProLength
     try{
         result = await axios.get(API_URL+"/search?q="+ign);
         homePro = result.data;
