@@ -9,6 +9,8 @@ var currYear = "";
 var x = "";
 var result;
 var homePro;
+var homeProLength;
+var ign;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -81,19 +83,21 @@ app.get("/prev", async (req, res) => {
 });
 
 app.post("/search", async (req, res) => {
-    const ign = req.body["personaName"];
+    ign = req.body["personaName"];
     if(ign){
         x = 0;
         try{
         result = await axios.get(API_URL+"/search?q="+ign);
         homePro = result.data;
+        homeProLength = result.data.length;
         
                 res.render("partials/search.ejs",{
                 currYear,
                 homePro,
-                x
+                x,
+                homeProLength
             });
-        console.log(homePro[0])       
+               
         } catch (error) {
             console.log(error.message);
         }
@@ -110,6 +114,74 @@ app.get("/search", async (req, res) => {
         currYear
     });
   });
+
+  app.get("/nextSearch", async (req, res) => {
+    
+    x = x + 15;
+    if (x < (homeProLength)){
+    try{
+        result = await axios.get(API_URL+"/search?q="+ign);
+        homePro = result.data;
+        res.render("partials/search.ejs",{
+            currYear,
+            homePro,
+            x,
+            homeProLength
+        });
+        
+    } catch (error) {
+        console.log(error.message);
+    }
+} else {
+    x = x - 15;
+    try{
+        result = await axios.get(API_URL+"/search?q="+ign);
+        homePro = result.data;
+        res.render("partials/search.ejs",{
+            currYear,
+            homePro,
+            x,
+            homeProLength
+        });
+        
+    } catch (error) {
+        console.log(error.message);
+    } 
+}
+});
+
+app.get("/prevSearch", async (req, res) => {
+    if (x >= 15){
+    x = x - 15;
+    try{
+        result = await axios.get(API_URL+"/search?q="+ign);
+        homePro = result.data;
+        res.render("partials/search.ejs",{
+            currYear,
+            homePro,
+            x,
+            homeProLength
+        });
+        
+    } catch (error) {
+        console.log(error.message);
+    }
+} else {
+    try{
+        result = await axios.get(API_URL+"/search?q="+ign);
+        homePro = result.data;
+        res.render("partials/search.ejs",{
+            currYear,
+            homePro,
+            x,
+            homeProLength
+        });
+        
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+});
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

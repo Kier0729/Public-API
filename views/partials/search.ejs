@@ -8,6 +8,7 @@
 <% if(locals.homePro){ %>
 <div class="bodyMain">
     <% var y = (x+15) %>
+    <% if (y < homeProLength) { %>
     <% for (x = x; x < y; x++){ %>    
     <div class="bodyDiv">
         <div class="picHome"><img class="pic" src="<%= homePro[x].avatarfull %>" alt=""></div>
@@ -15,7 +16,25 @@
     </div>
     
     <% } %>
+    <% } else { %>
+        <% for (x = x; x < homeProLength; x++){ %>    
+            <div class="bodyDiv">
+                <div class="picHome"><img class="pic" src="<%= homePro[x].avatarfull %>" alt=""></div>
+                <div class="proDet"><p>IGN: <%= homePro[x].personaname %></p> <p>ACCOUNT ID: <%= homePro[x].account_id %></p></div>
+            </div>
+    <% } %>
+    <% } %>
     </div>
+    <form action="GET">
+        <div class="nxtprvDiv">
+          <div type="submit" onclick="window.location.href='/prevSearch'"><!-- making button for prev -->
+            <p>Prev</p>
+          </div>
+          <div type="submit" onclick="window.location.href='/nextSearch'"><!-- making button for next -->
+            <p>Next</p>
+          </div>
+        </div>
+      </form>
     <% } else {%>
         <h3> No Results </h3>
     <% } %>        
