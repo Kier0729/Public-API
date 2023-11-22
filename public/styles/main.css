@@ -148,3 +148,14 @@ label{
   color: rgb(250, 4, 4);
   text-align: center;
 }
+
+.contactDiv{
+  min-height: calc(100vh - 130px);
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: aliceblue;
+  text-align: left;
+}

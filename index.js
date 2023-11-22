@@ -190,6 +190,13 @@ app.get("/prevSearch", async (req, res) => {
 }
 });
 
+
+app.get("/contact", async (req, res) => {        
+                res.render("partials/contact.ejs",{
+                currYear,    
+            });     
+  });
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
   });
