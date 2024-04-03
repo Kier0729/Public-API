@@ -54,11 +54,13 @@ body{
 footer div{ /* set a position to body to make footer position base on the body  */
     color: wheat;
     display: flex;
+    justify-content: center;
     align-items:flex-end;
     position: absolute;
     bottom: 0;
     left: 0;
     height: 50px;
+    width: 100%;
     padding-right: 10px;
 }
 
