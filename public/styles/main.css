@@ -5,6 +5,7 @@ body{
     flex-direction: column;
     background: #212534;
     margin: 0;
+    min-width: 600px;
 }
 
 .headerContainer{
@@ -64,6 +65,7 @@ footer div{ /* set a position to body to make footer position base on the body  
     padding-right: 10px;
     position: fixed;
     background-color: #212534;
+    min-width: 600px;
 }
 
 .pic{
@@ -99,10 +101,12 @@ footer div{ /* set a position to body to make footer position base on the body  
 .bodyMain{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  height: 100%;
+  height: 70vh;
   width: 100%;
   padding: 5px;
+  overflow: auto;
 }
+
 .bodyDiv{
   display: flex;
   padding-left: 25%;
@@ -113,6 +117,18 @@ footer div{ /* set a position to body to make footer position base on the body  
   border: 2px solid black;
   border-radius: 5px;
   background-color: rgb(0, 0, 0, 0.2);
+}
+@media (max-width: 800px) {
+  .bodyMain{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .bodyDiv{
+    width: 75%;
+    padding-left: 20%;
+    padding-right: 20%;
+  }
 }
 .proDet{
   display: flex;
@@ -127,18 +143,59 @@ footer div{ /* set a position to body to make footer position base on the body  
   justify-content: end;
   margin-right: 5px;
   gap: 5px;
+  position: absolute;
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  width: 100%;
+  padding: .25rem;
+  min-width: 600px;
 }
 
 .nxtprvDiv div{
   border: 2px solid wheat;
-  padding: 5px;
-  margin: 5px;
+  padding: 2px;
   border-radius: 5px;
+  height: fit-content;
+  background: #212534;
 }
+.nxtprvDiv div:hover{
+  border: 2px solid #212534;
+  background: #464f6e;
+}
+.liButton>a{
+  color: white;
+}
+.liButton>a:hover{
+  color: rgb(252, 2, 2);
+}
+
 h2{
-  color: beige;
+  color: transparent;
+  background: linear-gradient(
+    270deg,
+    #fa3030,
+    #ff1616,
+    #fb0101,
+    #fa3030,
+    #ff1616,
+    #fb0101,
+    #fa3030,
+    #ff1616,
+    #fb0101);
+  background-clip: text;
+  background-size: 200%;
   font-weight: bolder;
   text-align: center;
+  animation: h2-bg 2.5s ease infinite;
+}
+@keyframes h2-bg{
+  0%{
+    background-position: 0%;
+  }
+  100%{
+    background-position: 80%;
+  }
 }
 .nxtprvDiv p{
   color: bisque;
